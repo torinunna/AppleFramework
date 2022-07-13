@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F6DF3C2287E872C00D02C13 /* FrameworkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DF3C1287E872C00D02C13 /* FrameworkListViewController.swift */; };
+		5F6DF3C4287E88FC00D02C13 /* FrameworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DF3C3287E88FC00D02C13 /* FrameworkCell.swift */; };
 		948CD1EB2812AD5E003DC0C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948CD1EA2812AD5E003DC0C4 /* AppDelegate.swift */; };
 		948CD1ED2812AD5E003DC0C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948CD1EC2812AD5E003DC0C4 /* SceneDelegate.swift */; };
 		948CD1F22812AD5E003DC0C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 948CD1F02812AD5E003DC0C4 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F6DF3C1287E872C00D02C13 /* FrameworkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkListViewController.swift; sourceTree = "<group>"; };
+		5F6DF3C3287E88FC00D02C13 /* FrameworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkCell.swift; sourceTree = "<group>"; };
 		948CD1E72812AD5E003DC0C4 /* AppleFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		948CD1EA2812AD5E003DC0C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		948CD1EC2812AD5E003DC0C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				948CD1EC2812AD5E003DC0C4 /* SceneDelegate.swift */,
 				948CD21A2812ADBA003DC0C4 /* FramewokData.swift */,
 				948CD1F02812AD5E003DC0C4 /* Main.storyboard */,
+				5F6DF3C3287E88FC00D02C13 /* FrameworkCell.swift */,
+				5F6DF3C1287E872C00D02C13 /* FrameworkListViewController.swift */,
 				948CD1F32812AD5F003DC0C4 /* Assets.xcassets */,
 				948CD1F52812AD5F003DC0C4 /* LaunchScreen.storyboard */,
 				948CD1F82812AD5F003DC0C4 /* Info.plist */,
@@ -261,6 +267,8 @@
 				948CD1EB2812AD5E003DC0C4 /* AppDelegate.swift in Sources */,
 				948CD1ED2812AD5E003DC0C4 /* SceneDelegate.swift in Sources */,
 				948CD21B2812ADBA003DC0C4 /* FramewokData.swift in Sources */,
+				5F6DF3C4287E88FC00D02C13 /* FrameworkCell.swift in Sources */,
+				5F6DF3C2287E872C00D02C13 /* FrameworkListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
