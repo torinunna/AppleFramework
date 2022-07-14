@@ -75,3 +75,10 @@ extension FrameworkListViewController: UICollectionViewDelegateFlowLayout {
         return 10
     }
 }
+
+extension FrameworkListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let framework = list[indexPath.item]
+        print(">>selected: \(framework.name)")
+    }
+}
