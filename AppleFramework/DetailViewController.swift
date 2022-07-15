@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class DetailViewController: UIViewController {
     
@@ -26,6 +27,16 @@ class DetailViewController: UIViewController {
         titleLabel.text = framework.name
         descriptionLabel.text = framework.description
     
+    }
+    
+    @IBAction func learnMorePressed(_ sender: Any) {
+        
+        guard let url = URL(string: framework.urlString) else {
+            return
+        }
+        
+        let safari = SFSafariViewController(url: url)
+        present(safari, animated: true)
     }
     
 }
