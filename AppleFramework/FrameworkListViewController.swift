@@ -18,7 +18,7 @@ class FrameworkListViewController: UIViewController {
     
     let didSelect = PassthroughSubject<AppleFramework, Never>()
     
-    @Published var list: [AppleFramework] = AppleFramework.list
+    let items = CurrentValueSubject<[AppleFramework], Never>(AppleFramework.list)
     
     var dataSource : UICollectionViewDiffableDataSource<Section, Item>!
     typealias Item = AppleFramework
@@ -49,7 +49,7 @@ class FrameworkListViewController: UIViewController {
         }.store(in: &subscriptions)
         
 //    Output
-        $list
+        items
             .receive(on: RunLoop.main)
             .sink { [unowned self] list in
             applySectionItems(list)
@@ -95,7 +95,7 @@ class FrameworkListViewController: UIViewController {
 
 extension FrameworkListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let framework = list[indexPath.item]
+        let framework = items.value[indexPath.item]
         print(">>selected: \(framework.name)")
         didSelect.send(framework)
     }
