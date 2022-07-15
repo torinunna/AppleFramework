@@ -59,7 +59,7 @@ class FrameworkListViewController: UIViewController {
     private func applySectionItems(_ items: [Item], to section: Section = .main) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([section])
-        snapshot.appendItems(list, toSection: section)
+        snapshot.appendItems(items, toSection: section)
         dataSource.apply(snapshot)
     }
     
