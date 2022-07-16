@@ -12,24 +12,19 @@ class FrameworkListViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-//    Combine
-    
-    var subscriptions = Set<AnyCancellable>()
-    
-    let didSelect = PassthroughSubject<AppleFramework, Never>()
-    
-    let items = CurrentValueSubject<[AppleFramework], Never>(AppleFramework.list)
-    
-    var dataSource : UICollectionViewDiffableDataSource<Section, Item>!
     typealias Item = AppleFramework
-    
     enum Section {
         case main
     }
 
+    var dataSource : UICollectionViewDiffableDataSource<Section, Item>!
+    var subscriptions = Set<AnyCancellable>()
     
+    var viewModel : FrameworkListViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = FrameworkListViewModel(items: AppleFramework.list)
 
         navigationController?.navigationBar.topItem?.title = "Apple Frameworks"
    
@@ -38,22 +33,20 @@ class FrameworkListViewController: UIViewController {
     }
     
     private func bind() {
-//      Input
-        didSelect
+        viewModel.items
             .receive(on: RunLoop.main)
-            .sink { [unowned self] framework in
-            let sb = UIStoryboard(name: "Detail", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-                vc.framework.send(framework)
-            self.present(vc, animated: true)
+            .sink { [unowned self] list in applySectionItems(list)
         }.store(in: &subscriptions)
         
-//    Output
-        items
+        viewModel.selectedItem
+            .compactMap{ $0 }
             .receive(on: RunLoop.main)
-            .sink { [unowned self] list in
-            applySectionItems(list)
-        }.store(in: &subscriptions)
+            .sink { framework in
+                let sb = UIStoryboard(name: "Detail", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+                vc.framework.send(framework)
+                self.present(vc, animated: true)
+            }.store(in: &subscriptions)
     }
     
     private func applySectionItems(_ items: [Item], to section: Section = .main) {
@@ -91,12 +84,12 @@ class FrameworkListViewController: UIViewController {
         
         return layout
     }
+
 }
 
 extension FrameworkListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let framework = items.value[indexPath.item]
-        print(">>selected: \(framework.name)")
-        didSelect.send(framework)
+        viewModel.didSelect(at: indexPath)
+        }
     }
-}
+
