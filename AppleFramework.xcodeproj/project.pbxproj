@@ -108,6 +108,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5F900BC12882FF9A00F7D437 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5F900BBD2882BA3A00F7D437 /* FrameworkListViewModel.swift */,
+				5F900BBF2882BA6400F7D437 /* FrameworkDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		948CD1DE2812AD5E003DC0C4 = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +142,7 @@
 			children = (
 				948CD1EA2812AD5E003DC0C4 /* AppDelegate.swift */,
 				948CD1EC2812AD5E003DC0C4 /* SceneDelegate.swift */,
-				5F900BBD2882BA3A00F7D437 /* FrameworkListViewModel.swift */,
-				5F900BBF2882BA6400F7D437 /* FrameworkDetailViewModel.swift */,
+				5F900BC12882FF9A00F7D437 /* ViewModel */,
 				5F900BBB2882B9C800F7D437 /* Model */,
 				5F900BBC2882B9F200F7D437 /* View */,
 				948CD1F32812AD5F003DC0C4 /* Assets.xcassets */,

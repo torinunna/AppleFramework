@@ -15,11 +15,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    var viewModel: DetailViewModel!
+    
     var subscriptions = Set<AnyCancellable>()
     
-    let buttonPressed = PassthroughSubject<AppleFramework, Never>()
-    var framework = CurrentValueSubject<AppleFramework, Never>(AppleFramework(name: "Unknown", imageName: "", urlString: "", description: ""))
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
     private func bind() {
         
 //        Input
-        buttonPressed
+        viewModel.buttonPressed
             .receive(on: RunLoop.main)
             .compactMap { URL(string: $0.urlString) }
             .sink { [unowned self] url in
@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
             }.store(in: &subscriptions)
         
 //        Output
-        framework
+        viewModel.framework
             .receive(on: RunLoop.main)
             .sink { [unowned self] framework in
                 self.imageView.image = UIImage(named: framework.imageName)
@@ -48,9 +48,7 @@ class DetailViewController: UIViewController {
 
     
     @IBAction func learnMorePressed(_ sender: Any) {
-        
-        buttonPressed.send(framework.value)
-        
+        viewModel.learnMorePressed()
     }
     
 }
